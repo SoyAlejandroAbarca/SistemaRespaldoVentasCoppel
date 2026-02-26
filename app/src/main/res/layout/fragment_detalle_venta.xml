@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <!-- Header Azul con Logo y Botón Volver -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/coppel_blue"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/btnVolverDetalle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/abc_ic_ab_back_material"
+            app:tint="@android:color/white" />
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/logo_coppel" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Resumen de Venta"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/coppel_blue"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- CARD DE INFORMACIÓN COMPLETA -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:id="@+id/llContenedorDatos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- DATOS DEL PEDIDO -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PEDIDO" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetallePedido" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#000000" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="15dp"/>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CLIENTE" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetalleCliente" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nombre del Cliente" android:textSize="16sp" android:layout_marginBottom="15dp"/>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE" android:layout_marginBottom="15dp"/>
+
+                    <!-- DETALLES DEL PRODUCTO -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PRODUCTO" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetalleProducto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Descripción del producto" android:textSize="16sp" android:layout_marginBottom="5dp"/>
+                    <TextView android:id="@+id/tvDetalleDeptoArea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Departamento - Área" android:textSize="14sp" android:textColor="@android:color/darker_gray" android:layout_marginBottom="15dp"/>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="2" android:layout_marginBottom="15dp">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PRECIO" android:textStyle="bold" android:textSize="12sp"/>
+                            <TextView android:id="@+id/tvDetallePrecio" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$0.00" android:textColor="@android:color/holo_green_dark" android:textStyle="bold" android:textSize="18sp"/>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PAGO INICIAL" android:textStyle="bold" android:textSize="12sp"/>
+                            <TextView android:id="@+id/tvDetallePagoInicial" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$0.00" android:textSize="18sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE" android:layout_marginBottom="15dp"/>
+
+                    <!-- ENTREGA -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ENTREGA ESTIMADA" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetalleFecha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fecha" android:textSize="16sp" android:layout_marginBottom="15dp"/>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUGAR DE ENTREGA" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetalleLugar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sucursal / Domicilio" android:textSize="14sp" android:layout_marginBottom="15dp"/>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DIRECCIÓN COMPLETA" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetalleDireccion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dirección completa aquí" android:textSize="14sp" android:layout_marginBottom="15dp"/>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="REFERENCIAS" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetalleReferencias" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Referencias" android:textSize="14sp" android:layout_marginBottom="15dp"/>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TELÉFONOS DE CONTACTO" android:textStyle="bold" android:textColor="@color/coppel_blue" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvDetalleTelefonos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Principal / Adicional" android:textSize="14sp"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- BOTONES DE EDICIÓN Y ELIMINACIÓN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/btnEditarVenta"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:text="Editar"
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="@color/coppel_yellow"
+                    android:textColor="@color/coppel_blue"
+                    app:cornerRadius="30dp"
+                    android:textStyle="bold"
+                    android:drawableStart="@android:drawable/ic_menu_edit"
+                    android:paddingStart="15dp"/>
+
+                <Button
+                    android:id="@+id/btnEliminarVenta"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:text="Eliminar"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="#FF5252"
+                    android:textColor="@android:color/white"
+                    app:cornerRadius="30dp"
+                    android:textStyle="bold"
+                    android:drawableStart="@android:drawable/ic_menu_delete"
+                    android:paddingStart="15dp"/>
+
+            </LinearLayout>
+
+            <!-- BOTONES DE ACCIÓN PRINCIPALES -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+
+                <Button
+                    android:id="@+id/btnGenerarPDF"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Generar archivo PDF"
+                    android:backgroundTint="@color/coppel_yellow"
+                    android:textColor="@color/coppel_blue"
+                    app:cornerRadius="30dp"
+                    android:layout_marginBottom="12dp"
+                    android:drawableStart="@android:drawable/ic_menu_save"
+                    android:paddingStart="20dp"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/btnCompartir"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Compartir mediante..."
+                    android:backgroundTint="@color/coppel_yellow"
+                    android:textColor="@color/coppel_blue"
+                    app:cornerRadius="30dp"
+                    android:drawableStart="@android:drawable/ic_menu_share"
+                    android:paddingStart="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sincronizado con Base de Datos Local"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginTop="8dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

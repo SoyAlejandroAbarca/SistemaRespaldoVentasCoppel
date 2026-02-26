@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <!-- Header Azul con Logo y Botón Volver -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/coppel_blue"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/btnVolverConsultar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/abc_ic_ab_back_material"
+            app:tint="@android:color/white" />
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/logo_coppel" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Consultar Ventas"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/coppel_blue"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- Barra de Búsqueda -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Buscar por Pedido o Cliente"
+            app:startIconDrawable="@android:drawable/ic_menu_search"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBusquedaVenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnBuscarVenta"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Buscar"
+            android:backgroundTint="@color/coppel_yellow"
+            android:textColor="@color/coppel_blue"
+            android:textStyle="bold"
+            app:cornerRadius="30dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/tvTituloListado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ventas del día"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Listado Dinámico -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVentas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/item_venta"/>
+
+        <!-- Mensaje de No Resultados -->
+        <TextView
+            android:id="@+id/tvSinResultados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No se encontraron ventas registradas."
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</LinearLayout>

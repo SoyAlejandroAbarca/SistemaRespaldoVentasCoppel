@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Círculo amarillo central -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M54,54m-35,0a35,35 0,1 1,70 0a35,35 0,1 1,-70 0" />
+    
+    <!-- Ícono de ventas (Bolsa/Carrito simplificado) -->
+    <path
+        android:fillColor="#0038D6"
+        android:pathData="M40,40 h28 v25 c0,5 -5,8 -14,8 s-14,-3 -14,-8 z" />
+    <path
+        android:strokeColor="#0038D6"
+        android:strokeWidth="3"
+        android:pathData="M46,40 c0,-6 16,-6 16,0" />
+    
+    <!-- Símbolo de pesos -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M51,46 v16 M48,49 h6 c3,0 3,4 0,4 h-6 c-3,0 -3,4 0,4 h6" />
+</vector>
