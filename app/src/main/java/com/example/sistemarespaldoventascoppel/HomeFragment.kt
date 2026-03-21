@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,6 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val btnConsultarVentas = view.findViewById<Button>(R.id.btnConsultarVentas)
         val btnEstadistica = view.findViewById<Button>(R.id.btnEstadistica)
         val btnMiCuenta = view.findViewById<Button>(R.id.btnMiCuenta)
+        val fabSoporte = view.findViewById<FloatingActionButton>(R.id.fabSoporte)
 
         // --- Configuración de Eventos (Listeners) ---
 
@@ -65,5 +68,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 .addToBackStack(null)
                 .commit()
         }
+
+        // Evento para el botón de soporte flotante
+        fabSoporte.setOnClickListener {
+            mostrarDialogoSoporte()
+        }
+    }
+
+    private fun mostrarDialogoSoporte() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Soporte Técnico")
+            .setMessage("¿Necesitas ayuda con un pedido?\n\nEscribe un correo a: atencion@coppel.com\no llama al 559 500 0001")
+            .setPositiveButton("Entendido", null)
+            .setIcon(R.drawable.ic_help)
+            .show()
     }
 }
