@@ -30,7 +30,6 @@ class ConsultarVentasFragment : Fragment(R.layout.fragment_consultar_ventas) {
         tvSinResultados = view.findViewById(R.id.tvSinResultados)
         rvVentas = view.findViewById(R.id.rvVentas)
 
-        // Configurar RecyclerView
         rvVentas.layoutManager = LinearLayoutManager(requireContext())
         ventaAdapter = VentaAdapter(emptyList()) { venta ->
             // Navegar al detalle de la venta
@@ -44,7 +43,6 @@ class ConsultarVentasFragment : Fragment(R.layout.fragment_consultar_ventas) {
         }
         rvVentas.adapter = ventaAdapter
 
-        // Cargar ventas del día al iniciar
         cargarVentasDelDia()
 
         btnVolver.setOnClickListener {

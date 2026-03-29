@@ -42,7 +42,6 @@ class EditarPerfilFragment : Fragment(R.layout.fragment_editar_perfil) {
         val etPasswordNueva = view.findViewById<TextInputEditText>(R.id.etPasswordNueva)
         val etPasswordConfirmar = view.findViewById<TextInputEditText>(R.id.etPasswordConfirmar)
 
-        // Cargar datos actuales desde la DB
         cargarDatosActuales(etNombre, etCorreo, etTelefono, etCentro)
 
         btnRegresar.setOnClickListener {
@@ -75,10 +74,8 @@ class EditarPerfilFragment : Fragment(R.layout.fragment_editar_perfil) {
             if (centro.isEmpty()) { tilCentro.error = "Campo obligatorio"; esValido = false }
 
             if (esValido && usuarioLogueado != null) {
-                // Actualizar datos básicos
                 val res = dbHelper.actualizarDatosPerfil(usuarioLogueado!!, nombre, correo, telefono, centro)
-                
-                // Si intenta cambiar contraseña
+
                 if (passActual.isNotEmpty() || passNueva.isNotEmpty() || passConfirmar.isNotEmpty()) {
                     if (!dbHelper.validarLogin(usuarioLogueado!!, passActual)) {
                         tilPassActual.error = "Contraseña actual incorrecta"
@@ -98,7 +95,6 @@ class EditarPerfilFragment : Fragment(R.layout.fragment_editar_perfil) {
                 }
 
                 if (esValido) {
-                    // Si el correo cambió, actualizamos la sesión
                     if (correo != usuarioLogueado) {
                         prefs.edit().putString("usuario_logueado", correo).apply()
                     }

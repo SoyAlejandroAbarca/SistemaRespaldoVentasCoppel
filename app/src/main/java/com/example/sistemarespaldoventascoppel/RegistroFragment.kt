@@ -25,7 +25,7 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
 
         val btnGuardar = view.findViewById<Button>(R.id.btnGuardar)
 
-        // Referencias a los EditText
+
         val etNombre = view.findViewById<TextInputEditText>(R.id.etNombre)
         val etApellidoPat = view.findViewById<TextInputEditText>(R.id.etApellidoPat)
         val etApellidoMat = view.findViewById<TextInputEditText>(R.id.etApellidoMat)
@@ -35,7 +35,7 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
         val etPass = view.findViewById<TextInputEditText>(R.id.etPass)
         val etConfirmPass = view.findViewById<TextInputEditText>(R.id.etConfirmPass)
 
-        // Referencias a los TextInputLayout para mostrar errores
+
         val tilNombre = view.findViewById<TextInputLayout>(R.id.tilNombre)
         val tilApellidoPat = view.findViewById<TextInputLayout>(R.id.tilApellidoPat)
         val tilApellidoMat = view.findViewById<TextInputLayout>(R.id.tilApellidoMat)
@@ -46,7 +46,7 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
         val tilConfirmPass = view.findViewById<TextInputLayout>(R.id.tilConfirmPass)
 
         btnGuardar.setOnClickListener {
-            // Reiniciar errores
+
             tilNombre.error = null
             tilApellidoPat.error = null
             tilApellidoMat.error = null
@@ -66,7 +66,6 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
             val correo = etCorreo.text.toString().trim()
             val password = etPass.text.toString()
 
-            // Validar campos obligatorios
             if (nombre.isEmpty()) {
                 tilNombre.error = "Campo obligatorio"
                 esValido = false
@@ -96,7 +95,7 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
                 tilPass.error = "Campo obligatorio"
                 esValido = false
             } else {
-                // Reglas de seguridad
+
                 val tieneMayuscula = password.any { it.isUpperCase() }
                 val tieneNumero = password.any { it.isDigit() }
                 val tieneSimbolo = password.any { !it.isLetterOrDigit() }
@@ -115,7 +114,7 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
                 esValido = false
             }
 
-            // Validar coincidencia de contraseñas
+
             if (esValido && password != etConfirmPass.text.toString()) {
                 tilConfirmPass.error = "Las contraseñas no coinciden"
                 esValido = false

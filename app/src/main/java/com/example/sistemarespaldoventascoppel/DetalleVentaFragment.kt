@@ -29,7 +29,6 @@ class DetalleVentaFragment : Fragment(R.layout.fragment_detalle_venta) {
         dbHelper = DatabaseHelper(requireContext())
         val args = arguments ?: return
 
-        // Vincular vistas
         val btnVolver = view.findViewById<ImageButton>(R.id.btnVolverDetalle)
         val btnEditar = view.findViewById<Button>(R.id.btnEditarVenta)
         val btnEliminar = view.findViewById<Button>(R.id.btnEliminarVenta)
@@ -48,7 +47,6 @@ class DetalleVentaFragment : Fragment(R.layout.fragment_detalle_venta) {
         val tvReferencias = view.findViewById<TextView>(R.id.tvDetalleReferencias)
         val tvTelefonos = view.findViewById<TextView>(R.id.tvDetalleTelefonos)
 
-        // Asignar datos a las vistas
         tvPedido.text = "#" + args.getString("pedido")
         tvCliente.text = "${args.getString("nombre")} ${args.getString("apPat")} ${args.getString("apMat")}"
         tvProducto.text = args.getString("producto")
@@ -107,7 +105,6 @@ class DetalleVentaFragment : Fragment(R.layout.fragment_detalle_venta) {
         val canvas: Canvas = page.canvas
         val paint = Paint()
 
-        // Cabecera
         paint.color = Color.parseColor("#00519E")
         canvas.drawRect(0f, 0f, 595f, 80f, paint)
         
@@ -116,7 +113,6 @@ class DetalleVentaFragment : Fragment(R.layout.fragment_detalle_venta) {
         paint.isFakeBoldText = true
         canvas.drawText("SISTEMA DE RESPALDO DE VENTAS COPPEL", 50f, 50f, paint)
 
-        // Cuerpo
         paint.color = Color.BLACK
         paint.textSize = 12f
         paint.isFakeBoldText = false

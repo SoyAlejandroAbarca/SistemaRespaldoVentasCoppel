@@ -29,7 +29,6 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, D
             }
         }
 
-        // Tabla Usuarios
         const val TABLE_USUARIOS = "usuarios"
         const val COLUMN_USER_ID = "id"
         const val COLUMN_USER_NOMBRE = "nombre"
@@ -42,7 +41,6 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, D
         const val COLUMN_USER_TELEFONO = "telefono"
         const val COLUMN_USER_FOTO = "foto"
 
-        // Tabla Ventas
         const val TABLE_VENTAS = "ventas"
         const val COLUMN_VENTA_ID = "id"
         const val COLUMN_VENTA_PEDIDO = "numero_pedido"
@@ -135,7 +133,6 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, D
         return this.getReadableDatabase(passphrase)
     }
 
-    // --- Métodos para Usuarios ---
 
     fun registrarUsuario(nombre: String, apPat: String, apMat: String, area: String, numEmp: String, correo: String, pass: String): Long {
         val db = getWritableDb()
@@ -215,7 +212,6 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, D
         return db.rawQuery(query, arrayOf(usuario, usuario)) as Cursor
     }
 
-    // --- Métodos para Ventas ---
 
     fun registrarVenta(datos: Map<String, String>): Long {
         val db = getWritableDb()

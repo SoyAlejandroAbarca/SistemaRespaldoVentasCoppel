@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnHome.setOnClickListener {
-            // Regresar al Home si no estamos ahí
             val currentFragment = supportFragmentManager.findFragmentById(R.id.contenedor_fragmentos)
             if (currentFragment !is HomeFragment) {
                 cambiarFragmento(HomeFragment(), "Home")
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
         }
 
-        // Escuchar cambios en los fragmentos para mostrar/ocultar la barra
+
         supportFragmentManager.addOnBackStackChangedListener {
             actualizarVisibilidadBarra()
         }

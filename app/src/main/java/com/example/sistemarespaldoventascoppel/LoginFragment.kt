@@ -19,7 +19,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         repository = VentasRepository(requireContext())
 
-        // Referencias del diseño
         val tilUsuario = view.findViewById<TextInputLayout>(R.id.tilUsuario)
         val etUsuario = view.findViewById<TextInputEditText>(R.id.etUsuario)
         val tilPassword = view.findViewById<TextInputLayout>(R.id.tilPassword)
@@ -27,16 +26,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val btnLogin = view.findViewById<Button>(R.id.btnIniciarSesion)
         val tvCrearCuenta = view.findViewById<TextView>(R.id.tvCrearCuenta)
 
-        // Acción para el botón "Iniciar sesión"
         btnLogin.setOnClickListener {
             val usuario = etUsuario.text.toString().trim()
             val pass = etPassword.text.toString().trim()
 
-            // Limpiar errores previos
             tilUsuario.error = null
             tilPassword.error = null
 
-            // Validación de campos obligatorios
             if (usuario.isEmpty()) {
                 tilUsuario.error = "Ingresa tu correo o # de empleado"
                 return@setOnClickListener
@@ -46,15 +42,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 return@setOnClickListener
             }
 
-            // Validar contra el Repositorio (que maneja la DB cifrada)
             val loginExitoso = repository.validarLogin(usuario, pass)
 
             if (loginExitoso) {
-                // Guardar sesión en SharedPreferences
                 val prefs = requireActivity().getSharedPreferences("SesionUsuario", Context.MODE_PRIVATE)
                 prefs.edit().putString("usuario_logueado", usuario).apply()
 
-                // Obtener datos reales del usuario desde el repositorio
                 val datosUser = repository.obtenerDatosUsuario(usuario)
                 
                 val bundle = Bundle()
@@ -81,7 +74,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
         }
 
-        // Acción para "Crear cuenta"
         tvCrearCuenta.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.contenedor_fragmentos, RegistroFragment())

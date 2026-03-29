@@ -36,7 +36,6 @@ class EstadisticaFragment : Fragment(R.layout.fragment_estadistica) {
         val btnActualizar = view.findViewById<Button>(R.id.btnActualizarEstadisticas)
         val btnVolver = view.findViewById<ImageButton>(R.id.btnVolverEstadistica)
 
-        // Cargar datos reales al iniciar
         cargarEstadisticas(tvRopa, tvMuebles, tvTotalVendidoPesos, tvMetaAsignadaPesos, etMeta, pbProgreso, tvPorcentaje)
 
         btnActualizar.setOnClickListener {
@@ -47,14 +46,12 @@ class EstadisticaFragment : Fragment(R.layout.fragment_estadistica) {
                     val sdfMes = SimpleDateFormat("yyyy-MM", Locale.getDefault())
                     val mesActual = sdfMes.format(Date())
 
-                    // Guardar meta en SharedPreferences para persistencia
                     val prefs = requireActivity().getSharedPreferences("Metas", Context.MODE_PRIVATE)
                     prefs.edit()
                         .putFloat("meta_mensual", meta.toFloat())
                         .putString("mes_meta", mesActual)
                         .apply()
-                    
-                    // Recargar estadísticas por si hubo ventas nuevas antes de actualizar el progreso
+
                     totalVendido = repository.getTotalVendidoMes()
                     tvTotalVendidoPesos.text = format.format(totalVendido)
                     
@@ -89,7 +86,6 @@ class EstadisticaFragment : Fragment(R.layout.fragment_estadistica) {
         tvMuebles.text = mueblesCount.toString()
         tvTotal.text = format.format(totalVendido)
 
-        // Recuperar meta guardada de SharedPreferences
         val prefs = requireActivity().getSharedPreferences("Metas", Context.MODE_PRIVATE)
         
         val sdfMes = SimpleDateFormat("yyyy-MM", Locale.getDefault())
@@ -98,7 +94,6 @@ class EstadisticaFragment : Fragment(R.layout.fragment_estadistica) {
 
         var metaGuardada = prefs.getFloat("meta_mensual", 0f).toDouble()
 
-        // Lógica de reseteo automático el día 1 de cada mes
         if (mesActual != mesGuardado) {
             metaGuardada = 0.0
             prefs.edit()

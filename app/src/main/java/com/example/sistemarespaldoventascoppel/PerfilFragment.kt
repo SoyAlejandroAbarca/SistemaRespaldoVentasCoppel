@@ -63,7 +63,6 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
         val tvCorreo = view.findViewById<TextView>(R.id.tvCorreoPerfil)
         val tvTelefono = view.findViewById<TextView>(R.id.tvTelefonoPerfil)
 
-        // Cargar datos del usuario logueado
         cargarDatosUsuario(tvNombre, tvNumEmpleado, tvCentro, tvCorreo, tvTelefono)
 
         btnRegresar.setOnClickListener {
@@ -92,7 +91,6 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
 
     private fun cargarDatosUsuario(tvNombre: TextView, tvNum: TextView, tvCentro: TextView, tvCorreo: TextView, tvTel: TextView) {
         if (usuarioLogueado != null) {
-            // Usamos el repositorio para obtener datos reales
             val datosUser = repository.obtenerDatosUsuario(usuarioLogueado!!)
             if (datosUser != null) {
                 val nombre = datosUser["nombre"]
@@ -108,13 +106,6 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
                 tvCentro.text = "Área: $area"
                 tvCorreo.text = "Correo: $correo"
                 tvTel.text = "Teléfono: $telefono"
-
-                // Para la foto, aún necesitamos consultar la DB directamente o añadir el campo al map
-                // Por ahora, como es sensible, lo dejaremos para una consulta específica si es necesario.
-                // Sin embargo, para mantener la funcionalidad de la foto, usaré el DatabaseHelper.getUsuario a través del repositorio si lo añadimos.
-                // Pero wait, el map no trae la foto por diseño para evitar el crash del CursorWindow.
-                // Implementaremos un método específico para la foto en el repositorio.
-                
                 cargarFotoPerfil()
             }
         }
@@ -122,8 +113,7 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
 
     private fun cargarFotoPerfil() {
         if (usuarioLogueado == null) return
-        
-        // Consultar la foto específicamente para evitar sobrecargar el CursorWindow global
+
         val dbHelper = DatabaseHelper.getInstance(requireContext())
         val db = dbHelper.getReadableDb()
         val query = "SELECT ${DatabaseHelper.COLUMN_USER_FOTO} FROM ${DatabaseHelper.TABLE_USUARIOS} WHERE ${DatabaseHelper.COLUMN_USER_CORREO} = ? OR ${DatabaseHelper.COLUMN_USER_NUM_EMPLEADO} = ?"

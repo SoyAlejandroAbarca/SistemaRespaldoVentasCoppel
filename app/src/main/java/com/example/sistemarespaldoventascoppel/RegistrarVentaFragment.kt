@@ -20,18 +20,15 @@ class RegistrarVentaFragment : Fragment(R.layout.fragment_registrar_venta) {
 
         dbHelper = DatabaseHelper(requireContext())
 
-        // Botones de acción
         val btnVolver = view.findViewById<ImageButton>(R.id.btnVolverVenta)
         val btnGuardar = view.findViewById<Button>(R.id.btnGuardarVenta)
 
-        // Referencias de campos de texto simple
         val etNumeroPedido = view.findViewById<TextInputEditText>(R.id.etNumeroPedido)
         val etNombreCliente = view.findViewById<TextInputEditText>(R.id.etNombreCliente)
         val etApPaternoCliente = view.findViewById<TextInputEditText>(R.id.etApPaternoCliente)
         val etApMaternoCliente = view.findViewById<TextInputEditText>(R.id.etApMaternoCliente)
         val etDescripcionProducto = view.findViewById<TextInputEditText>(R.id.etDescripcionProducto)
-        
-        // Referencias de Menús Desplegables (AutoCompleteTextView)
+
         val etTipo = view.findViewById<AutoCompleteTextView>(R.id.etTipo)
         val etProveedor = view.findViewById<AutoCompleteTextView>(R.id.etProveedor)
         val etArea = view.findViewById<AutoCompleteTextView>(R.id.etArea)
@@ -54,7 +51,6 @@ class RegistrarVentaFragment : Fragment(R.layout.fragment_registrar_venta) {
         val etTelefonoPrincipal = view.findViewById<TextInputEditText>(R.id.etTelefonoPrincipal)
         val etTelefonoAdicional = view.findViewById<TextInputEditText>(R.id.etTelefonoAdicional)
 
-        // Configuración de adaptadores para los menús desplegables
         val opcionesTipo = arrayOf("Crédito", "Contado")
         val adapterTipo = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, opcionesTipo)
         etTipo.setAdapter(adapterTipo)
@@ -79,7 +75,6 @@ class RegistrarVentaFragment : Fragment(R.layout.fragment_registrar_venta) {
             etReferencias, etTelefonoPrincipal, etTelefonoAdicional
         )
 
-        // --- MODO EDICIÓN ---
         ventaId = arguments?.getInt("id", -1) ?: -1
         if (ventaId != -1) {
             btnGuardar.text = "Actualizar Registro"
@@ -88,8 +83,7 @@ class RegistrarVentaFragment : Fragment(R.layout.fragment_registrar_venta) {
             etApPaternoCliente.setText(arguments?.getString("apPat"))
             etApMaternoCliente.setText(arguments?.getString("apMat"))
             etDescripcionProducto.setText(arguments?.getString("producto"))
-            
-            // Seteo de valores para los dropdowns
+
             etTipo.setText(arguments?.getString("tipo"), false)
             etProveedor.setText(arguments?.getString("proveedor"), false)
             etArea.setText(arguments?.getString("area"), false)

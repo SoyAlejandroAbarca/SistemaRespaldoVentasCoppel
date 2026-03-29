@@ -6,7 +6,6 @@ import net.sqlcipher.Cursor
 class VentasRepository(context: Context) {
     private val dbHelper = DatabaseHelper.getInstance(context)
 
-    // --- Usuarios ---
     fun registrarUsuario(nombre: String, apPat: String, apMat: String, area: String, numEmp: String, correo: String, pass: String): Long {
         return dbHelper.registrarUsuario(nombre, apPat, apMat, area, numEmp, correo, pass)
     }
@@ -31,7 +30,6 @@ class VentasRepository(context: Context) {
         return dbHelper.actualizarPassword(usuario, nuevaPass)
     }
 
-    // --- Ventas ---
     fun registrarVenta(datos: Map<String, String>): Long {
         return dbHelper.registrarVenta(datos)
     }

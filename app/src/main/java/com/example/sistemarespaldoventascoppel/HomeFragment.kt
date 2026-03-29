@@ -15,31 +15,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Referencias a los TextViews de bienvenida y fecha
         val tvNombre = view.findViewById<TextView>(R.id.tvNombreEmpleado)
         val tvNumEmpleado = view.findViewById<TextView>(R.id.tvNumEmpleadoHome)
         val tvFechaHora = view.findViewById<TextView>(R.id.tvFechaHora)
 
-        // Recuperamos los datos del usuario
         val nombreRecibido = arguments?.getString("nombre_clave")
         val numRecibido = arguments?.getString("num_empleado_clave")
 
         if (nombreRecibido != null) tvNombre.text = nombreRecibido
         if (numRecibido != null) tvNumEmpleado.text = numRecibido
 
-        // Mostrar Fecha y Hora de ingreso actual
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
         val currentDateTime = sdf.format(Date())
         tvFechaHora.text = "Ingreso: $currentDateTime"
 
-        // 2. Referencias a los Botones de Funciones
         val btnRegistrarVenta = view.findViewById<Button>(R.id.btnRegistrarVenta)
         val btnConsultarVentas = view.findViewById<Button>(R.id.btnConsultarVentas)
         val btnEstadistica = view.findViewById<Button>(R.id.btnEstadistica)
         val btnMiCuenta = view.findViewById<Button>(R.id.btnMiCuenta)
         val fabSoporte = view.findViewById<FloatingActionButton>(R.id.fabSoporte)
 
-        // --- Configuración de Eventos (Listeners) ---
 
         btnRegistrarVenta.setOnClickListener {
             parentFragmentManager.beginTransaction()
@@ -69,7 +64,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 .commit()
         }
 
-        // Evento para el botón de soporte flotante
         fabSoporte.setOnClickListener {
             mostrarDialogoSoporte()
         }

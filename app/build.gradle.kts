@@ -41,14 +41,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    
-    // SQLCipher para cifrado de base de datos
     implementation(libs.sqlcipher)
     implementation(libs.androidx.sqlite)
-    
-    // AndroidX Security para guardar la clave de cifrado de forma segura
     implementation(libs.androidx.security.crypto)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
